@@ -1,3 +1,8 @@
 banana
+<<<<<<< HEAD
 apple
 grape1
+=======
+apple1
+grape
+>>>>>>> br2
