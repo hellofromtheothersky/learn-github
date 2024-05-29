@@ -1,0 +1,346 @@
+﻿id,object_id,first_name,last_name,birthplace,affiliation_name
+1,p:2,Ben,Elowitz,,Blue Nile
+2,p:3,Kevin,Flaherty,,Wetpaint
+3,p:4,Raju,Vegesna,,Zoho
+4,p:5,Ian,Wenig,,Zoho haha
+5,p:6,"SELECT t.id, 
+       t.title, 
+       t.s_secret, 
+       t.content, 
+       t.senton, 
+       t.hidden, 
+       t.reported, 
+       t.root_id, 
+       t.sender_id, 
+       t.s_contact_name, 
+       t.s_contact_email, 
+       t.item_id, 
+       t.status_id, 
+       t.event_id, 
+       l.id              AS last_id, 
+       l.title           AS last_title, 
+       l.s_secret        AS last_s_secret, 
+       l.content         AS last_content, 
+       l.senton          AS last_sentOn, 
+       l.hidden          AS last_hidden, 
+       l.reported        AS last_reported, 
+       l.root_id         AS last_root_id, 
+       l.sender_id       AS last_sender_id, 
+       l.s_contact_name  AS last_s_contact_name, 
+       l.s_contact_email AS last_s_contact_email, 
+       l.item_id         AS last_item_id, 
+       l.status_id       AS last_status_id, 
+       l.event_id        AS last_event_id, 
+       last.count        AS t_count 
+FROM   oc_t_mmessenger_recipients r 
+       JOIN oc_t_mmessenger_message l 
+         ON l.id = r.message_id 
+       JOIN (SELECT Max(im.id) AS max, 
+                    Count(1)   AS count 
+             FROM   oc_t_mmessenger_message im 
+             GROUP  BY root_id) last 
+         ON r.message_id = last.max 
+       JOIN oc_t_mmessenger_message t 
+         ON t.id = l.root_id 
+       JOIN oc_t_mmessenger_message_labels ml 
+         ON ( ml.fk_i_message_id = t.id 
+              AND ml.fk_i_label_id = 1 
+              AND ml.fk_i_user_id = 2569 ) 
+WHERE  ( r.recipient_id = 2469 
+          OR l.sender_id = 2469 ) 
+ORDER  BY last.max DESC 
+LIMIT  0, 10 ",Rose,"Redding, CA",i/o Ventures
+6,p:7,Jay,Adelson,"Detroit, MI",Digg
+7,p:8,Owen,Byrne,,Digg
+8,p:9,Ron,Gorodetzky,,Digg
+9,p:10,Mark,Zuckerberg,,Facebook
+10,p:11,Dustin,Moskovitz,"Gainesville, FL",Facebook
+11,p:12,Owen,Van Natta,,Asana
+12,p:13,Matt,Cohler,,LinkedIn
+13,p:14,Chris,Hughes,"Hickery, North Carolina",General Catalyst Partners
+14,p:16,Alex,Welch,,C7 Group
+15,p:17,Darren,Crystal,,Photobucket
+16,p:18,Michael,Clark,,Photobucket (Old)
+17,p:19,Greg,Wimmer,,Photobucket
+18,p:20,Peter,Foster,,Photobucket
+19,p:21,Heather,Dana,,Photobucket
+20,p:22,Peter,Pham,,"Photobucket, Inc."
+21,p:23,Scott,Penberthy,,Photobucket
+22,p:24,Alice,Lankester,"Surrey, England",Apple
+23,p:25,Alex,Musil,,Photobucket
+24,p:26,Peter,Thiel,,Confinity
+25,p:29,Gus,Tai,,BillShrink
+26,p:30,David,Sacks,,GumGum
+27,p:31,Alan,Braverman,,Geni
+28,p:32,Ken,Howery,,The Founder's Fund
+29,p:33,Luke,Nosek,,The Founder's Fund
+30,p:34,Sean,Parker,,Asana
+31,p:35,George,Zachary,,Millennial Media
+32,p:37,Greg,Waldorf,,Charles River Ventures
+33,p:39,Jason,Rubin,USA,Monkey Gods
+34,p:40,Andy,Gavin,,Flektor
+35,p:41,Jason,Kay,,Flektor
+36,p:42,Evan,Williams,,Google
+37,p:43,Garrett,Camp,,CitiVox
+38,p:44,Geoff,Smith,,StumbleUpon
+39,p:45,Justin,LeFrance,,StumbleUpon
+40,p:46,Jack,Dorsey,"St. Louis, MO","Twitter, Square"
+41,p:48,Jason,Goldman,,Twitter
+42,p:49,Biz,Stone,,Twitter
+43,p:51,Efrat,Moshkoviz,,Gizmoz
+44,p:52,Amihay,Zer Kavod,,Gizmoz
+45,p:53,Eldad,Ben Tora,Israel,Spark Networks
+46,p:56,Eli,Wurtman,,Gizmoz
+47,p:57,Arun,Gupta,,Gizmoz
+48,p:58,Barry,Brott,,Gizmoz
+49,p:59,Dennis,Mudd,,Slacker
+50,p:60,Jim,Cady,,Slacker
+51,p:61,Jonathan,Sasse,,Slacker
+52,p:62,Trip,Adler,,cacaoTV
+53,p:63,Jared,Friedman,,Scribd
+54,p:64,Tikhon,Bernstam,,Scribd
+55,p:65,Bill,Nguyen,,Lala
+56,p:66,John,Kuch,,Lala
+57,p:67,Sky,Dayton,,Helio
+58,p:68,Wonhee,Sull,,Helio
+59,p:69,Todd,Tapin,,Helio
+60,p:70,Kieran,Hannon,,Helio
+61,p:71,Ali,Zanjani,,Helio
+62,p:72,Jay,Lee,,Helio
+63,p:73,Michael,Grossi,,Helio
+64,p:74,Meg,Whitman,,Zipcar
+65,p:75,Pierre,Omidyar,,Omidyar Network
+66,p:76,John,Donahoe,,JustGive
+67,p:77,William C.,Cobb,,eBay
+68,p:78,Rajiv,Dutta,,eBay
+69,p:79,Henry,Gomez,,eBay
+70,p:80,Niklas,ZennstrÃ¶m,,Skype
+71,p:81,Lorie,Norrington,,eBay
+72,p:82,Micheal,Jacobson,,eBay
+73,p:83,Bob,Swan,,eBay
+74,p:84,Andrew,Weinreich,"New York, New York",drop.io
+75,p:85,Jeremy,LaTrasse,,Odeo
+76,p:86,Quentin,Gallivan,,Postini
+77,p:87,Scott,Petry,,Postini
+78,p:89,Don,Beck,,Postini
+79,p:90,Jocelyn,Ding,,Google
+80,p:92,Janus,Friis,"Copenhagen, Denmark",Joost
+81,p:93,Dirk-Willem,van Gulik,,Joost
+82,p:94,Ben,Golub,,Familybuilder
+83,p:96,Mallku,Caballero,,CommProve
+84,p:97,Michael,O'Callaghan,,Babelgum
+85,p:98,Silvio,Scaglia,,Babelgum
+86,p:99,Ryan,King,,Plaxo
+87,p:100,Peter,Lester,,Plaxo
+88,p:101,J. Todd,Masonis,,Plaxo
+89,p:102,John,McCrea,,Plaxo
+90,p:103,Cameron,T. Ring,,Plaxo
+91,p:104,Joseph,Smarr,,Plaxo
+92,p:105,Venkates,Swaminathan,,Plaxo
+93,p:106,Barney,Pell,,Powerset
+94,p:107,Steve,Newcomb,,Virgance
+95,p:108,Lorenzo,Thione,,CrowdFlower
+96,p:110,Richard,Jalichandra,,Technorati
+97,p:111,Adam,Hertz,,Unaffiliated
+98,p:112,Peter,Hirshberg,,Technorati
+99,p:113,Joi,Ito,"Kyoto, Japan",Sanrio Digital
+100,p:114,Teresa,Malo,,Technorati
+101,p:115,Ted,Murphy,,PayPerPost
+102,p:116,Randy,Mountz,,PayPerPost
+103,p:117,Peter,Wright,,PayPerPost
+104,p:118,Shaun,Pope,"Orlando, Florida",TangledMesh
+105,p:122,Jason,Calacanis,,Mahalo
+106,p:123,Daniel,Graf,,Kyte
+107,p:124,Erik,Abair,,Kyte
+108,p:125,Ron,Conway,,Angel Investors LP
+109,p:127,Steve,Mitgang,,Veoh
+110,p:128,Joshua,Metzger,,Veoh
+111,p:129,Ted,Dunning,,Veoh
+112,p:130,Ted,Meisel,,Veoh
+113,p:132,Todd,Dagres,,Spark Capital
+114,p:134,Ian,Clarke,,OneSpot
+115,p:135,Josh,Kopelman,"Great Neck, New York",First Round Capital
+116,p:136,George,Garrick,,"Offerpal, Mochi Media"
+117,p:137,Scott,Kliger,,Jingle Networks
+118,p:138,Dr. Francisco,J Martin,,iSOCO
+119,p:139,Atakan,Cetinsoy,,MyStrands
+120,p:140,Stephen,Venute,,MyStrands
+121,p:141,Gabriel,Aldamiz-echevarria,,Chicisimo
+122,p:142,Trevor,Legwinski,Wisconsin,Strands
+123,p:143,Dr. Rick D.,Hangartner,,MyStrands
+124,p:144,Noyda,Matos,,MyStrands
+125,p:145,Jim,Shur,,MyStrands
+126,p:146,Dr. Marc,Torrens,,MyStrands
+127,p:147,Gina,Bianchini,,Mightybell
+128,p:148,Marc,Andreessen,"Cedar Falls, Iowa",Opsware
+129,p:149,Luke,Helms,,LifeLock
+130,p:150,David,Cowan,,LifeLock
+131,p:151,Chini,Krishnan,,LifeLock
+132,p:152,Jim,Greener,,LifeLock
+133,p:153,Todd,Davis,,LifeLock
+134,p:154,Antonio,Asensio,,MyStrands
+135,p:155,John,Witchel,,Prosper
+136,p:156,Kirk,Inglis,,Prosper
+137,p:158,Chris,Denend,,Prosper
+138,p:159,Jason,Knight,,Wesabe
+139,p:160,Marc,Hedlund,,Wesabe
+140,p:161,Michael,Cerda,,Jangl
+141,p:162,Alex,Mendez,,Unaffiliated
+142,p:163,Ed,Giedgowd,,Prosper
+143,p:164,Thomas,Pigoski,,Prosper
+144,p:165,Stuart,Davidson,,Unaffiliated
+145,p:166,Chris,Hadsell,,Unaffiliated
+146,p:167,Chad,Hurley,Pennsylvania,Big Six
+147,p:168,Steve,Chen,"Taipei, Taiwan",YouTube
+148,p:169,Jawed,Karim,,YouTube
+149,p:170,Aaron,Novak,,Stickam
+150,p:171,Hideki,Kishioka,,Stickam
+151,p:172,Max,Haot,,Livestream
+152,p:173,Justin,Kan,,Justin.TV
+153,p:174,Michael,Seibel,"Brooklyn, NY",Socialcam
+154,p:175,Emmett,Shear,,JustinTV
+155,p:176,Kyle,Vogt,,Justin.TV
+156,p:177,Jacob,Woodward,,JustinTV
+157,p:178,Brad,Hunstable,,Ustream
+158,p:179,John,Ham,,Ustream
+159,p:180,Chris,Yeh,"Santa Monica, CA",pbworks
+160,p:181,Guy,Eliav,,blogTV
+161,p:182,Nir,Ofir,,blogTV
+162,p:183,Oren,Levy,,blogTV
+163,p:185,Alex,Iskold,,AdaptiveBlue
+164,p:186,Andy,Roth,,AdaptiveBlue
+165,p:187,Rion,Nakaya,,AdaptiveBlue
+166,p:188,Karen,Teng,,AdaptiveBlue
+167,p:189,Yaron,Samid,"Haifa, Israel",Register.com
+168,p:190,Robert,Levitan,,Pando
+169,p:191,Laird,Popkin,,Pando
+170,p:192,Craig,Walker,California,Yahoo!
+171,p:193,Vincent,Paquet,,GrandCentral
+172,p:194,Don,Fletcher,,GrandCentral
+173,p:195,Paul,Graham,,YCombinator
+174,p:196,Trevor,Blackwell,,Y Combinator
+175,p:197,Jessica,Livingston,,YCombinator
+176,p:198,Robert,Morris,,Y Combinator
+177,p:199,Fred,Wagner,,Ikan
+178,p:200,Fabio,Zsigmond,,Ikan
+179,p:201,Geraldo,Yoshizawa,,Ikan
+180,p:202,Todd,Vernon,,Lijit Networks
+181,p:203,Joshua,Schachter,,geoURL
+182,p:204,Stan,James,,Lijit
+183,p:205,Brad,Feld,,Occipital
+184,p:206,Amir,Ashkenazi,,Adap.tv
+185,p:207,Rich,Skrenta,"Pittsburgh, PA",Topix
+186,p:209,Steve,Rubinstein,,Topix
+187,p:210,Chris,Tolles,Palo Alto CA,Topix
+188,p:212,Blake,Williams,,AOL
+189,p:213,Jason,Goldberg,,Jobster
+190,p:214,Phil,Bogle,,Jobster
+191,p:215,David,Eckert,,Jobster
+192,p:216,Kevin,Hatfield,,Jobster
+193,p:217,Jessica,Scheibach,,Jobster
+194,p:218,Russell,Williams,,Jobster
+195,p:219,Leah,Culver,,OAuth
+196,p:220,Daniel,Burka,,Tiny Speck
+197,p:221,Shawn,Allen,,Pownce
+198,p:222,David,Huard,,revision3
+199,p:223,David,Prager,,Revision3
+200,p:224,Cedric,Maloux,"Paris, France",Geewa
+201,p:225,Matthew,Gertner,,AllPeers
+202,p:226,Jan,Odvarko,,AllPeers
+203,p:227,Louis,Letourneau,,AllPeers
+204,p:228,Edwin,Ong,,CastTV
+205,p:229,Alex,Vikati,,CastTV
+206,p:230,Paul,Martino,,Aggregate Knowledge
+207,p:231,Chris,Law,,Aggregate Knowledge
+208,p:232,Randy,Komisar,,Aggregate Knowledge
+209,p:233,Tim,Bucher,,Zing
+210,p:234,Andrea,De Luca,,ciaopeople
+211,p:235,Michael,Gifford,,Zing
+212,p:236,Arthur,van Hoff,,Zing
+213,p:237,Jon,McCormack,,Zing
+214,p:238,Mark,Ross,,Zing
+215,p:239,Doug,Sinclair,,Zing
+216,p:240,Eric,Hertz,,ZenZui
+217,p:241,John,SanGiovanni,,ZenZui
+218,p:242,Jim,Cooley,,ZenZui
+219,p:243,Dr. Benjamin,Bederson,,ZenZui
+220,p:244,Susan,Sigl,,ZenZui
+221,p:245,Cindy,Spodek Dickey,,ZenZui
+222,p:246,Brian C.,McGarvey,,TwitterCorp
+223,p:247,James,Hong,,HOT or NOT
+224,p:248,Jim,Young,,HOT or NOT
+225,p:249,Brian,Sugar,,Sugar Publishing
+226,p:250,Lisa,Sugar,,Sugar Publishing
+227,p:251,Brian,Dhatt,,Sugar Publishing
+228,p:252,Krista,Moatz,,Sugar Publishing
+229,p:253,Arthur,Cinader,,Sugar
+230,p:254,Jason,Rhee,,Sugar Publishing
+231,p:255,Onnalee,MacDonald,,Sugar Publishing
+232,p:256,Geoffery,Prentice,,Skype
+233,p:257,Stefan,Oberg,,Skype
+234,p:258,Laura,Shesgreen,,Skype
+235,p:259,Robert,Miller,,Skype
+236,p:260,Boaz,Zilberman,,Fring
+237,p:261,Michael,Robertson,,GizmoProject
+238,p:262,Avi,Shechter,,Fring
+239,p:263,Alex,Nerst,,Fring
+240,p:264,Jacob,Guedalia,,iSkoot
+241,p:265,David,Guedalia,,iSkoot
+242,p:268,Bill,Tam,,EQO
+243,p:269,Colin,Quon,,EQO
+244,p:270,Laura,Colwill,,EQO
+245,p:271,Jeff,LaPorte,,EQO
+246,p:272,Todd,Heintz,,EQO
+247,p:273,John,Lieu,,EQO
+248,p:274,Kevin,Lim,,EQO
+249,p:275,Simon,Edelstyn,,EQO
+250,p:276,Rich,Roberts,,EQO
+251,p:278,Elliott,Breece,,AmieStreet
+252,p:279,Elias,Roman,"Queens, NY",Amie Street
+253,p:280,Joshua,Boltuch,,AmieStreet
+254,p:281,Johan,Vosmeijer,,SellABand
+255,p:282,Pim,Betist,,SellABand
+256,p:283,Dagmar,Heijmans,,SellABand
+257,p:284,Todd,Cronin,,Unaffiliated
+258,p:286,Anthony,Batt,,BUZZMEDIA
+259,p:287,Tyler,Goldman,,BuzzNet
+260,p:288,John,Glascott,,BuzzNet
+261,p:289,Valerio,Zingarelli,,Babelgum
+262,p:290,Adam,McKay,,FunnyOrDie
+263,p:291,Will,Ferrell,,FunnyOrDie
+264,p:292,Sean,McCarthy,,Steorn
+265,p:293,Roger,Hatfield,,Steorn
+266,p:294,Michael,Daly,,Steorn
+267,p:295,Michael,Moriarty,,Steorn
+268,p:296,Richard,Walshe,,Steorn
+269,p:297,Tony,Conrad,,StockTwits
+270,p:298,Martin,Remy,"Koblenz, Germany",Surphace
+271,p:299,Steve,Nieker,,Sphere
+272,p:300,Toni,Schneider,Switzerland,Surphace
+273,p:301,David,Mahoney,,Sphere
+274,p:302,Scott,Kurnit,,Britely
+275,p:306,Michael,Raneri,,"Zecco Holdings, Inc."
+276,p:307,Shampa,Banerjee,,MeeVee
+277,p:308,Ryan,Allis,"Pittsburgh, PA",iContact
+278,p:309,Aaron,Houghton,,iContact
+279,p:310,Suranga,Chandratillake,,blinkx
+280,p:311,Matthew,Service,,Blinkx
+281,p:312,Matthew,Scheybeler,,Blinkx
+282,p:313,Federico,Grosso,,Blinkx
+283,p:314,Frances,Smith,,Blinkx
+284,p:315,Julia,Blystone,,Blinkx
+285,p:319,Oren,Michels,,Mashery
+286,p:321,David,Cancel,"New York, NY",Performable
+287,p:322,Jay,Meattle,"New Delhi, India",Shareaholic
+288,p:323,Gary,Baker,,ClipBlast
+289,p:331,Jacky,Chan,,Unaffiliated
+290,p:333,Jeremie,Berrebi,"Paris, France",Verteego (Emerald Vision)
+291,p:334,Jeremy,Stoppelman,,Yelp
+292,p:335,Russel,Simmons,,Yelp
+293,p:336,Geoff,Donaker,,Yelp
+294,p:338,Jyri,Engestrom,"Helsinki, Finland",XIHA
+295,p:339,Petteri,Koponen,,Jaiku
+296,p:340,Neil,Hepburn,,Tun3r
+297,p:343,Chris,Latko,"San Diego, CA",PropertyMaps
+298,p:345,Sam,Rogoway,,TripUp
+299,p:346,Robert,Gaal,,Wakoopa
